@@ -8,27 +8,28 @@ This repository contains an Age Calculator web app and an end-to-end/API/unit te
 1. Install nvm for mac/windows using below instruction 
 https://www.nvmnode.com/guide/installation.html
 
-2. Install node using nvm
+2. Clone the git repository
+```bash
+git clone https://github.com/tonarendar/age-calculator.git
+cd age-calculator
+```
+
+3. Install node using nvm
 ```bash
 nvm install
 nvm use
 ```
 
-3. Verfy node version = v24.x.x
+4. Verfy node version = v24.x.x
 ```bash
 node -v
-```
-
-4. Clone the git repository
-```bash
-git clone https://github.com/tonarendar/age-calculator.git
-cd age-calculator
 ```
 
 5. Install Project dependencies - (NOTE:This will take a while to successfully complete the package installation)
 
 ```bash
 npm install
+npx playwright install
 ```
 
 6. Build and Start Application**
@@ -38,21 +39,21 @@ npm run start
 ```
 Application will be hosted on http://localhost:3000 
 
-7. To execute varoius Test Types**
-```bash
+7. To execute varoius Test Types
 ## Execute Unit Test
+```bash
 npm run test:unit
 ```
-```bash
 ## Execute Functional Test
+```bash
 npm run test:functional
 ```
-```bash
 ## Execute Visual Test
+```bash
 npm run test:visual
 ```
-```bash
 ## Execute Accessibility Test
+```bash
 npm run test:accessibility
 ```
 
