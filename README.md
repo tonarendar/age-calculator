@@ -4,46 +4,57 @@ This repository contains an Age Calculator web app and an end-to-end/API/unit te
 
 ## Setup
 **Pre-Requsite dependencies**
-```bash
+
 1. Install nvm for mac/windows using below instruction 
 https://www.nvmnode.com/guide/installation.html
 
-2. Install node using .nvmrc
+2. Install node using nvm
+```bash
+nvm install
 nvm use
+```
 
-3. Verfy node version = v24.14.0
+3. Verfy node version = v24.x.x
+```bash
 node -v
 ```
 
-1. **Install dependencies**
-   ```bash
-   npm install
-   npm run install:drivers
-   ```
+4. Clone the git repository
+```bash
+git clone https://github.com/tonarendar/age-calculator.git
+cd age-calculator
+```
 
-2. **Build and Start Application**
-   ```bash
-   npm run build
-   npm run start - Application will be hosted on http://localhost:3000 
-   ```
+5. Install Project dependencies - (NOTE:This will take a while to successfully complete the package installation)
 
-3. **Run varoius Test Types**
-   ```bash
-   ## Execute Unit Test
-   npm run test:unit
-   ```
-   ```bash
-   ## Execute Functional Test
-   npm run test:functional
-   ```
-   ```bash
-   ## Execute Visual Test
-   npm run test:visual
-   ```
-   ```bash
-   ## Execute Accessibility Test
-   npm run test:accessibility
-   ```
+```bash
+npm install
+```
+
+6. Build and Start Application**
+```bash
+npm run build
+npm run start
+```
+Application will be hosted on http://localhost:3000 
+
+7. To execute varoius Test Types**
+```bash
+## Execute Unit Test
+npm run test:unit
+```
+```bash
+## Execute Functional Test
+npm run test:functional
+```
+```bash
+## Execute Visual Test
+npm run test:visual
+```
+```bash
+## Execute Accessibility Test
+npm run test:accessibility
+```
 
 ## Project Structure
 
@@ -88,6 +99,4 @@ age-calculator/
 ```
 
 ## Extensions
-
-No additional VS Code extensions are required, although the official [Playwright Test for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) extension can provide syntax highlighting and debugging support.
-
+TODO: 
