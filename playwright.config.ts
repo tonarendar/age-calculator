@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { release } from 'os';
 
 export default defineConfig({
   testDir: './tests',
@@ -33,7 +34,7 @@ export default defineConfig({
       { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
     ];
     // WebKit isn't supported on macOS 13 (Darwin 22.x) in some Playwright versions
-    if (!(process.platform === 'darwin' && require('os').release().startsWith('22'))) {
+    if (!(process.platform === 'darwin' && release().startsWith('22'))) {
       projects.push({ name: 'webkit', use: { ...devices['Desktop Safari'] } });
     }
     return projects;

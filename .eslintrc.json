@@ -1,5 +1,8 @@
 {
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "env": {
     "node": true,
     "es2021": true,
@@ -11,5 +14,11 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
+  "ignorePatterns": [
+    "dist/",
+    "playwright-report/",
+    "test-results/",
+    "node_modules/"
+  ],
   "rules": {}
 }

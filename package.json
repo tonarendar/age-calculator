@@ -14,11 +14,12 @@
     "test:visual": "playwright test tests/visual/*.spec.ts --project=chromium",
     "test:accessibility": "playwright test tests/accessibility/*.spec.ts --project=chromium",
     "test:performance": "TODO: Placeholder for performance testing script",
-    "test:audit": "npm audit",
-    "codequality": "TODO: Placeholder for code quality tools like ESLint or SonarQube",
+    "test:ui": "playwright test tests/functional tests/visual tests/api-tests tests/accessibility --ui",
+    "security:audit": "npm audit",
+    "security:audit:fix": "npm audit fix",
     "lint": "eslint . --ext .ts",
-    "typecheck": "tsc --noEmit",
-    "test:ui": "playwright test tests/functional tests/visual tests/api-tests tests/accessibility --ui"
+    "typecheck": "tsc --noEmit"
+
   },
   "keywords": [
     "typescript",
@@ -38,6 +39,9 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^20.11.0",
     "@types/supertest": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "eslint": "^8.57.0",
     "jest": "^30.3.0",
     "supertest": "^7.2.2",
     "ts-jest": "^29.4.6",
