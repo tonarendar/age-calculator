@@ -10,7 +10,7 @@ function formatDate(date: Date): string {
   return `${y}/${m}/${d}`;
 }
 
-test.describe('Error Journey', { tags: '@error-journey' }, () => {
+test.describe('Error Journey', { tag: '@error-journey' }, () => {
 
   test.beforeEach(async ({ page }) => {
     const homePage = new HomePage(page);
@@ -20,7 +20,7 @@ test.describe('Error Journey', { tags: '@error-journey' }, () => {
   });
 
 
-  test('UI returns error message: Please enter date in YYYY/MM/DD format - for invalid date format input', { tags: '@error-journey' }, async ({ page }) => {
+  test('UI returns error message: Please enter date in YYYY/MM/DD format - for invalid date format input', { tag: '@error-journey' }, async ({ page }) => {
     const homePage = new HomePage(page);
     
     // User Actions
@@ -31,7 +31,7 @@ test.describe('Error Journey', { tags: '@error-journey' }, () => {
     await expect(homePage.getResultText()).toContainText('Error: Please enter date in YYYY/MM/DD format');
   });
 
-  test('UI returns error message: Please enter date in YYYY/MM/DD format - for Non-Date input', { tags: '@error-journey' }, async ({ page }) => {
+  test('UI returns error message: Please enter date in YYYY/MM/DD format - for Non-Date input', { tag: '@error-journey' }, async ({ page }) => {
     const homePage = new HomePage(page);
     
     // User Actions
@@ -42,7 +42,7 @@ test.describe('Error Journey', { tags: '@error-journey' }, () => {
     await expect(homePage.getResultText()).toContainText('Error: Please enter date in YYYY/MM/DD format');
   });
 
-    test('UI returns error message: Please enter date in YYYY/MM/DD format - for Empty Date input', { tags: '@error-journey' }, async ({ page }) => {
+    test('UI returns error message: Please enter date in YYYY/MM/DD format - for Empty Date input', { tag: '@error-journey' }, async ({ page }) => {
     const homePage = new HomePage(page);
     
     // User Actions
@@ -53,7 +53,7 @@ test.describe('Error Journey', { tags: '@error-journey' }, () => {
   });
 
 
-  test('UI returns error message: Invalid date - for Invalid Date: 0000/00/00', { tags: '@error-journey' }, async ({ page }) => {
+  test('UI returns error message: Invalid date - for Invalid Date: 0000/00/00', { tag: '@error-journey' }, async ({ page }) => {
     const homePage = new HomePage(page);
     // User Actions
     await homePage.fillDateOfBirth('0000/00/00');
