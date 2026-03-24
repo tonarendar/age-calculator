@@ -56,6 +56,10 @@ npm run test:visual
 ```bash
 npm run test:accessibility
 ```
+## Run Code Quality
+```bash
+npm run lint
+```
 
 ## Project Structure
 
