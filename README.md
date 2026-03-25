@@ -67,6 +67,7 @@ npm run test:accessibility
 ## Run Code Quality Checks
 ```bash
 npm run lint
+npm run typecheck
 ```
 
 ## Project Structure
