@@ -65,13 +65,6 @@ npm run lint
 
 ```text
 age-calculator/
-├── jest.config.cjs                  # Jest configuration for unit test execution
-├── package.json                     # Project metadata, dependencies, and npm scripts
-├── playwright.config.ts             # Playwright projects, reporters, and runtime config
-├── pomREADME.md                     # Notes/documentation for Page Object Model approach
-├── README.md                        # Main project documentation and usage guide
-├── tsconfig.jest.json               # TypeScript compiler settings specific to Jest tests
-├── tsconfig.json                    # Base TypeScript compiler configuration
 ├── public/
 │   ├── index.html                   # Static HTML entry page for the app
 │   └── index.js                     # Client-side script used by the web UI
@@ -84,23 +77,23 @@ age-calculator/
 │   ├── api-tests/
 │   │   └── api.spec.ts              # API endpoint validation and response assertions
 │   ├── functional/
-│   │   ├── calculateAgeBussinessCritical.spec.ts # Business-critical age paths
-│   │   ├── calculateAgeErrorJourney.spec.ts      # Error-state and negative journey tests
-│   │   ├── device.spec.ts                        # Device/viewport behavior checks
+│   │   ├── calculateAgeBussinessCritical.spec.ts # Tests covering Business-critical and positive user journey
+│   │   ├── calculateAgeErrorJourney.spec.ts      # Tests covering Error-state and negative journey
+│   │   ├── homePageSecurity.spec.ts              # Tests covering security scenarios and vulnerability validation
 │   │   └── pages/
 │   │       ├── HomePage.ts           # Page Object Model for home page interactions
-│   │       └── LoginPage.ts          # Page Object Model for login page interactions
 │   ├── unit/
 │   │   ├── ageCalculator.test.ts     # Unit tests for age calculation utilities
 │   │   └── validator.test.ts         # Unit tests for input validator utilities
 │   └── visual/
-│       ├── visualTest.spec.ts        # Visual regression test definitions
+│       ├── visualTest.spec.ts            # Visual regression test definitions
 │       └── visualTest.spec.ts-snapshots/ # Baseline snapshots for visual comparisons
-├── playwright-report/
-│   ├── index.html                    # Generated Playwright HTML report entry point
-│   └── data/                         # Report assets/data consumed by the HTML report
-├── test-results/
-│   └── a11y-Accessibility-checks--fb08c-us-accessibility-violations-chromium/ # Stored artifacts for a specific failed/past run
+├── jest.config.cjs                  # Jest configuration for unit test execution
+├── package.json                     # Project metadata, dependencies, and npm scripts
+├── playwright.config.ts             # Playwright projects, reporters, and runtime config
+├── README.md                        # Main project documentation and usage guide
+├── tsconfig.jest.json               # TypeScript compiler settings specific to Jest tests
+├── tsconfig.json                    # Base TypeScript compiler configuration
 ```
 
 ## Extensions
