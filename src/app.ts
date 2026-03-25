@@ -40,8 +40,10 @@ function handleCalculate(req: express.Request, res: express.Response) {
   const age = calculateAge(birthDate, today);
   let message = `You are ${age} years old.`;
 
-  if (age >= 100) {
+  if (age > 100) {
     message += ' Wow! You are over 100!';
+  } else if (age === 100) {
+    message += ' Congratulations!';
   }
 
   if (

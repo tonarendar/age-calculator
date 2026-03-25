@@ -7,7 +7,7 @@ function formatDate(date: Date): string {
     return `${year}/${month}/${day}`;
 }
 
-test('API returns valid response - GET:200 for valid date', async({request})=>{
+test('1.API returns valid response - GET:200 for valid date', async({request})=>{
     const oneYearOldDate = new Date();
     oneYearOldDate.setFullYear(oneYearOldDate.getFullYear() - 1);
 
@@ -21,7 +21,7 @@ test('API returns valid response - GET:200 for valid date', async({request})=>{
     expect(responseBody.message).toBe('You are 1 years old. Happy Birthday!');
 })
 
-test('API returns valid error response - GET:404 for invalid endpoint', async({request})=>{
+test('2.API returns valid error response - GET:404 for invalid endpoint', async({request})=>{
     const fetchMessage= await request.get(`/calcula`);
 
     // Assertion

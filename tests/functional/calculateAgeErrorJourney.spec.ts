@@ -11,7 +11,7 @@ test.describe('Error Journey', { tag: '@error-journey' }, () => {
   });
 
 
-  test('UI returns error message: Please enter date in YYYY/MM/DD format - for invalid date format input', { tag: '@error-journey' }, async ({ page }) => {
+  test('1.UI returns error message: Please enter date in YYYY/MM/DD format - for invalid date format input', async ({ page }) => {
     const homePage = new HomePage(page);
     
     // User Actions
@@ -22,7 +22,7 @@ test.describe('Error Journey', { tag: '@error-journey' }, () => {
     await expect(homePage.getResultText()).toContainText('Error: Please enter date in YYYY/MM/DD format');
   });
 
-  test('UI returns error message: Please enter date in YYYY/MM/DD format - for Non-Date input', { tag: '@error-journey' }, async ({ page }) => {
+  test('2.UI returns error message: Please enter date in YYYY/MM/DD format - for Non-Date input', async ({ page }) => {
     const homePage = new HomePage(page);
     
     // User Actions
@@ -33,7 +33,7 @@ test.describe('Error Journey', { tag: '@error-journey' }, () => {
     await expect(homePage.getResultText()).toContainText('Error: Please enter date in YYYY/MM/DD format');
   });
 
-    test('UI returns error message: Please enter date in YYYY/MM/DD format - for Empty Date input', { tag: '@error-journey' }, async ({ page }) => {
+    test('3.UI returns error message: Please enter date in YYYY/MM/DD format - for Empty Date input', async ({ page }) => {
     const homePage = new HomePage(page);
     
     // User Actions
@@ -44,7 +44,7 @@ test.describe('Error Journey', { tag: '@error-journey' }, () => {
   });
 
 
-  test('UI returns error message: Invalid date - for Invalid Date: 0000/00/00', { tag: '@error-journey' }, async ({ page }) => {
+  test('4.UI returns error message: Invalid date - for Invalid Date: 0000/00/00', async ({ page }) => {
     const homePage = new HomePage(page);
     // User Actions
     await homePage.fillDateOfBirth('0000/00/00');
@@ -54,7 +54,7 @@ test.describe('Error Journey', { tag: '@error-journey' }, () => {
     await expect(homePage.getResultText()).toContainText('Error: Invalid date');
   });
 
-  test('Verify No console errors on page load', async ({ page }) => {
+  test('5.Verify No console errors on page load', async ({ page }) => {
     const homePage = new HomePage(page);
     
     // Listen for console messages and fail the test if any are error messages appear

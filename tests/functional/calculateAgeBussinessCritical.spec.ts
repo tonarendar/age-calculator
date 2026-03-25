@@ -19,34 +19,63 @@ test.describe('Happy Path scenario', () => {
     await expect(homePage.getDateInput()).toBeEmpty();
   });
 
-  test('UI displays birthdate placeholder as YYYY/MM/DD', {tag: '@happy-path'}, async ({ page }) => {
+  test('1.UI should display birthdate placeholder as YYYY/MM/DD', {tag: '@happy-path'}, async ({ page }) => {
     const homePage = new HomePage(page);
     await expect(homePage.getDateInput()).toHaveAttribute('placeholder', 'YYYY/MM/DD');
   });
 
-  test('UI displays valid Age, for valid Date: input', {tag: '@happy-path'}, async ({ page }) => {
+  test('2.UI should display valid Age for valid Date input', {tag: '@happy-path'}, async ({ page }) => {
     const homePage = new HomePage(page);
     
     // setting the date to 18 years ago from today to make the test resilient to time changes
     const pastDate = new Date();
     pastDate.setFullYear(pastDate.getFullYear() - 18);
-    const userDOB = formatDate(pastDate);
-    const expectedAge = '18';
-    console.log("User DOB:", userDOB);
-    
+    const expectedAge = '18';    
     
     // User Actions
-    await homePage.fillDateOfBirth(userDOB);
+    await homePage.fillDateOfBirth(formatDate(pastDate));
     await homePage.clickSubmit();
     // Assertions
-    await expect(homePage.getDateInput()).toHaveValue(userDOB);
+    await expect(homePage.getDateInput()).toHaveValue(formatDate(pastDate));
     await expect(homePage.getResultText()).toContainText(`You are ${expectedAge} years old.`);
   });
 
-  test('UI displays Custom message(You are not born yet!) - for Future Date', {tag: '@happy-path'}, async ({ page }) => {
+  test('3.UI should display age and custom message for users mm/dd matching current date', {tag: '@happy-path'}, async ({ page }) => {
     const homePage = new HomePage(page);
     
-    // setting the date to tomorrow's date to trigger the "You are not born yet!" message
+    // setting the date to 25 years ago having current month and day from today to make the test resilient to time changes
+    const pastDate = new Date();
+    pastDate.setFullYear(pastDate.getFullYear() - 25);
+    const expectedAge = '25';
+    
+    // User Actions
+    await homePage.fillDateOfBirth(formatDate(pastDate));
+    await homePage.clickSubmit();
+
+    // Assertions
+    await expect(homePage.getResultText()).toContainText(`You are ${expectedAge} years old. Happy Birthday!`);
+  });
+
+    test('4.UI should display custom message for users date one day before current date', {tag: '@happy-path'}, async ({ page }) => {
+    const homePage = new HomePage(page);
+    
+    // setting the date to 25 years ago having current month and day from today to make the test resilient to time changes
+    const oneDayPastDate = new Date();
+    oneDayPastDate.setDate(oneDayPastDate.getDate() - 1);
+    const expectedAge = '0';
+    
+    // User Actions
+    await homePage.fillDateOfBirth(formatDate(oneDayPastDate));
+    await homePage.clickSubmit();
+
+    // Assertions
+    await expect(homePage.getResultText()).toContainText(`You are ${expectedAge} years old.`);
+  });
+
+  test('5.UI should display custom message (You are not born yet!) for future date', {tag: '@happy-path'}, async ({ page }) => {
+    const homePage = new HomePage(page);
+    
+    // setting the date to tomorrow's dates
     const futureDate = new Date();
     futureDate.setDate(futureDate.getDate() + 1); // Set to tomorrow's date
     
@@ -58,7 +87,7 @@ test.describe('Happy Path scenario', () => {
     await expect(homePage.getResultText()).toContainText("You are not born yet!");
   });
 
-  test('UI displays Custom message(Are you sure..) - for Current Date', {tag: '@happy-path'}, async ({ page }) => {
+  test('6.UI should display custom message (Are you sure you are born..) for current date', {tag: '@happy-path'}, async ({ page }) => {
     const homePage = new HomePage(page);
     
     // Set the date to today's date to trigger the "Are you sure.." message
@@ -73,7 +102,7 @@ test.describe('Happy Path scenario', () => {
     await expect(homePage.getResultText()).toContainText('Are you sure you are born today?');
   });
 
-  test('UI displays Custom message(Wow! you are over 100 - for age greater than 100)', {tag: '@happy-path'}, async ({ page }) => {
+  test('7.UI should display custom message (Wow! you are over 100) for age greater than 100', {tag: '@happy-path'}, async ({ page }) => {
     const homePage = new HomePage(page);
     
     // setting the date to 101 years ago from today to trigger the "WOW you are over 100!" message
@@ -88,7 +117,22 @@ test.describe('Happy Path scenario', () => {
     await expect(homePage.getResultText()).toContainText('Wow! You are over 100!');
     });
 
-    test('UI displays Age - for leap year Date: 2024/02/29', {tag: '@happy-path'},async ({ page }) => {
+  test('8.UI should display custom message for age equal to 100', {tag: '@happy-path'}, async ({ page }) => {
+    const homePage = new HomePage(page);
+
+    // setting the date to 100 years ago from today to trigger the exact 100 message
+    const pastDate = new Date();
+    pastDate.setFullYear(pastDate.getFullYear() - 100);
+
+    // User Actions
+    await homePage.fillDateOfBirth(formatDate(pastDate));
+    await homePage.clickSubmit();
+
+    // Assertions
+    await expect(homePage.getResultText()).toContainText('You are 100 years old. Congratulations!');
+  });
+
+    test('9.UI should display valid Age - for leap year Date: 2024/02/29', {tag: '@happy-path'},async ({ page }) => {
       const homePage = new HomePage(page);
       
       // setting the date to 2024/02/29 to verify leap year handling
