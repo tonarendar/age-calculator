@@ -1,6 +1,12 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/HomePage';
 
+/**
+ * @description UI Security test suite for the Age Calculator home page.
+ * Verifies that malicious inputs (XSS, SQL injection, oversized payloads) are safely
+ * rejected by the client-side validation layer and are never reflected back in the DOM.
+ * All tests use the HomePage Page Object Model and run against a live local server.
+ */
 test.describe('UI Security Scenarios', { tag: '@security' }, () => {
   test.beforeEach(async ({ page }) => {
     const homePage = new HomePage(page);

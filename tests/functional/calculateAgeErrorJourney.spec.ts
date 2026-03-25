@@ -1,6 +1,11 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/HomePage';
 
+/**
+ * @description Error journey test suite for the Age Calculator.
+ * Verifies that invalid, empty, and malformed date inputs are gracefully rejected
+ * with the appropriate error messages, and that the page loads without console errors.
+ */
 test.describe('Error Journey', { tag: '@error-journey' }, () => {
 
   test.beforeEach(async ({ page }) => {

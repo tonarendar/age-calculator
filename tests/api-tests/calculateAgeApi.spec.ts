@@ -1,5 +1,11 @@
 import {test, expect} from '@playwright/test';
 
+/**
+ * Formats a Date object into a `YYYY/MM/DD` string as expected by the `/calculate` API endpoint.
+ *
+ * @param date - The Date object to format.
+ * @returns A string in `YYYY/MM/DD` format.
+ */
 function formatDate(date: Date): string {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -7,6 +13,12 @@ function formatDate(date: Date): string {
     return `${year}/${month}/${day}`;
 }
 
+/**
+ * @test Valid date — happy path
+ * - Sends GET `/calculate?birthdate=<1 year ago>`
+ * - Asserts HTTP 200
+ * - Asserts response message contains `You are 1 years old. Happy Birthday!`
+ */
 test('1.API returns valid response - GET:200 for valid date', async({request})=>{
     const oneYearOldDate = new Date();
     oneYearOldDate.setFullYear(oneYearOldDate.getFullYear() - 1);
@@ -21,6 +33,12 @@ test('1.API returns valid response - GET:200 for valid date', async({request})=>
     expect(responseBody.message).toBe('You are 1 years old. Happy Birthday!');
 })
 
+/**
+ * @test Invalid endpoint — 404 error path
+ * - Sends GET `/calcula` (typo / non-existent route)
+ * - Asserts HTTP 404
+ * - Asserts response body contains `Cannot GET /calcula`
+ */
 test('2.API returns valid error response - GET:404 for invalid endpoint', async({request})=>{
     const fetchMessage= await request.get(`/calcula`);
 

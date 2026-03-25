@@ -2,7 +2,13 @@ import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/HomePage';
   
 
-// Helper to format date
+/**
+ * Formats a Date object into a string using the `YYYY/MM/DD` format
+ * expected by the Age Calculator UI and API.
+ *
+ * @param date - The Date object to format.
+ * @returns A string in `YYYY/MM/DD` format.
+ */
 function formatDate(date: Date): string {
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2, '0');
@@ -10,6 +16,11 @@ function formatDate(date: Date): string {
   return `${y}/${m}/${d}`;
 }
 
+/**
+ * @description Happy path test suite for the Age Calculator.
+ * Covers business-critical scenarios including standard age display, birthday messages,
+ * future/past edge cases, leap year handling.
+ */
 test.describe('Happy Path scenario', () => {
 
   test.beforeEach(async ({ page }) => {
