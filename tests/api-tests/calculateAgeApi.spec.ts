@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
 /**
  * Formats a Date object into a `YYYY/MM/DD` string as expected by the `/calculate` API endpoint.
@@ -7,10 +7,10 @@ import {test, expect} from '@playwright/test';
  * @returns A string in `YYYY/MM/DD` format.
  */
 function formatDate(date: Date): string {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}/${month}/${day}`;
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}/${month}/${day}`;
 }
 
 /**
@@ -19,19 +19,23 @@ function formatDate(date: Date): string {
  * - Asserts HTTP 200
  * - Asserts response message contains `You are 1 years old. Happy Birthday!`
  */
-test('1.API returns valid response - GET:200 for valid date', async({request})=>{
-    const oneYearOldDate = new Date();
-    oneYearOldDate.setFullYear(oneYearOldDate.getFullYear() - 1);
+test("1.API returns valid response - GET:200 for valid date", async ({
+  request,
+}) => {
+  const oneYearOldDate = new Date();
+  oneYearOldDate.setFullYear(oneYearOldDate.getFullYear() - 1);
 
-    const fetchMessage= await request.get(`/calculate?birthdate=${formatDate(oneYearOldDate)}`);
+  const fetchMessage = await request.get(
+    `/calculate?birthdate=${formatDate(oneYearOldDate)}`,
+  );
 
-    // Parse json
-    const responseBody = await fetchMessage.json();
-    
-    // Assertion
-    expect(fetchMessage.status()).toBe(200);
-    expect(responseBody.message).toBe('You are 1 years old. Happy Birthday!');
-})
+  // Parse json
+  const responseBody = await fetchMessage.json();
+
+  // Assertion
+  expect(fetchMessage.status()).toBe(200);
+  expect(responseBody.message).toBe("You are 1 years old. Happy Birthday!");
+});
 
 /**
  * @test Invalid endpoint — 404 error path
@@ -39,11 +43,13 @@ test('1.API returns valid response - GET:200 for valid date', async({request})=>
  * - Asserts HTTP 404
  * - Asserts response body contains `Cannot GET /calcula`
  */
-test('2.API returns valid error response - GET:404 for invalid endpoint', async({request})=>{
-    const fetchMessage= await request.get(`/calcula`);
+test("2.API returns valid error response - GET:404 for invalid endpoint", async ({
+  request,
+}) => {
+  const fetchMessage = await request.get(`/calcula`);
 
-    // Assertion
-    expect(fetchMessage.status()).toBe(404);
-    const responseBody = await fetchMessage.text();
-    expect(responseBody).toContain('Cannot GET /calcula');
+  // Assertion
+  expect(fetchMessage.status()).toBe(404);
+  const responseBody = await fetchMessage.text();
+  expect(responseBody).toContain("Cannot GET /calcula");
 });
