@@ -1,10 +1,13 @@
 # Age Calculator - Project
 
 This repository contains an Age Calculator web app with unit/e2e/API/ test suite built with TypeScript, Playwright, and Jest.
+
+The web app accepts a data input YYYY/MM/DD,returns corresponding age with custom message.
+
 <img width="444" height="458" alt="image" src="https://github.com/user-attachments/assets/f5e61fcc-dd25-408a-bc36-7ecba471c735" />
 
 **Pre-Requsite dependencies**
-1. Install nvm for mac/windows using below instruction 
+1. Install nvm for mac/windows using instruction 
 https://www.nvmnode.com/guide/installation.html
 
 ## Project Setup
@@ -33,14 +36,14 @@ npm install
 npx playwright install
 ```
 
-6. Build and Start Application**
+6. Build and Start Application
 ```bash
 npm run build
 npm run start
 ```
 Application will be hosted on http://localhost:3000 
 
-7. To execute varoius Test Types
+7. To execute varoius Test Types:
 ## Execute Unit Test
 ```bash
 npm run test:unit
