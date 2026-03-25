@@ -8,7 +8,7 @@ This repository contains an Age Calculator web app and an end-to-end/API/unit te
 1. Install nvm for mac/windows using below instruction 
 https://www.nvmnode.com/guide/installation.html
 
-2. Clone the git repository
+2. Clone the git repository OR Download the zip and cd into the project folder
 ```bash
 git clone https://github.com/tonarendar/age-calculator.git
 cd age-calculator
