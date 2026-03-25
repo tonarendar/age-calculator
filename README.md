@@ -7,7 +7,7 @@ The web app accepts a data input YYYY/MM/DD,returns corresponding age with custo
 <img width="444" height="458" alt="image" src="https://github.com/user-attachments/assets/f5e61fcc-dd25-408a-bc36-7ecba471c735" />
 
 **Pre-Requsite dependencies**
-1. Install nvm for mac/windows using below instruction 
+1. Install nvm for mac/windows using instruction 
 https://www.nvmnode.com/guide/installation.html
 
 ## Project Setup
