@@ -1,12 +1,13 @@
 # Age Calculator - Project
 
-This repository contains an Age Calculator web app and an end-to-end/API/unit test suite built with TypeScript, Playwright, and Jest.
+This repository contains an Age Calculator web app with unit/e2e/API/ test suite built with TypeScript, Playwright, and Jest.
+<img width="444" height="458" alt="image" src="https://github.com/user-attachments/assets/f5e61fcc-dd25-408a-bc36-7ecba471c735" />
 
-## Setup
 **Pre-Requsite dependencies**
-
 1. Install nvm for mac/windows using below instruction 
 https://www.nvmnode.com/guide/installation.html
+
+## Project Setup
 
 2. Clone the git repository OR Download the zip and cd into the project folder
 ```bash
