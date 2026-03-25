@@ -19,7 +19,6 @@
     "security:audit:fix": "npm audit fix",
     "lint": "eslint . --ext .ts",
     "typecheck": "tsc --noEmit"
-
   },
   "keywords": [
     "typescript",
